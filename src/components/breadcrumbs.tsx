@@ -1,7 +1,6 @@
 'use client';
 import {Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator} from '@/components/ui/breadcrumb';
 import {useBreadcrumbs} from '@/hooks/use-breadcrumbs';
-import {Slash} from 'lucide-react';
 import React, {createContext, Fragment, ReactNode, useContext, useState} from 'react';
 
 type BreadcrumbsProps = {
@@ -56,9 +55,7 @@ export function Breadcrumbs({lastLabel}: BreadcrumbsProps) {
                                     <BreadcrumbLink href={item.link}>{item.title}</BreadcrumbLink>
                                 </BreadcrumbItem>
 
-                                <BreadcrumbSeparator className="hidden md:block">
-                                    <Slash/>
-                                </BreadcrumbSeparator>
+                                <BreadcrumbSeparator className="hidden md:block"/>
                             </>
                         ) : (
                             <BreadcrumbPage>{item.title}</BreadcrumbPage>
