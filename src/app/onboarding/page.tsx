@@ -1,5 +1,6 @@
 import {GalleryVerticalEnd} from 'lucide-react';
 import {Progress} from '@/components/ui/progress';
+import React from "react";
 
 const OnboardingPage = () => {
     return (
@@ -31,7 +32,8 @@ const OnboardingPage = () => {
 
                         <h1 className="text-3xl font-bold">Tell Us About Yourself</h1>
                         <p className="mt-2 text-muted-foreground"> This helps us personalize your experience with the most appropriate Athena AI
-                            modules. </p></div>
+                            modules. </p>
+                    </div>
                 </div>
             </div>
         </div>
