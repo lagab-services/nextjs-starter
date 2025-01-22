@@ -1,10 +1,10 @@
 "use client"
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {AppSidebar} from '@/components/app-sidebar';
 import {SidebarInset, SidebarProvider, SidebarTrigger} from '@/components/ui/sidebar';
-import useLocalStorage from '@/hooks/use-local-storage';
 import {Separator} from "@/components/ui/separator";
 import {BreadcrumbProvider, Breadcrumbs} from "@/components/breadcrumbs";
+import useLocalStorage from "@/hooks/use-local-storage";
 
 interface DashboardLayoutProps {
     children: React.ReactNode
@@ -12,7 +12,14 @@ interface DashboardLayoutProps {
 
 const DashboardLayout = ({children}: DashboardLayoutProps) => {
     const [_leftOpen, _setLeftOpen] = useLocalStorage({key: 'collapsed-sidebar-left', defaultValue: false});
+    const [isLoaded, _setLoaded] = useState(false)
 
+    useEffect(() => {
+        _setLoaded(true)
+    }, []);
+
+
+    if (!isLoaded) return null; // Avoid flash due to hydratation
     return (
         <SidebarProvider open={_leftOpen} onOpenChange={_setLeftOpen}>
             <AppSidebar/>
