@@ -14,7 +14,7 @@ export default function useLocalStorage<T>({
             const storedValue = localStorage.getItem(key)
             return storedValue !== null ? (JSON.parse(storedValue) as T) : defaultValue
         } catch (error) {
-            console.warn(`Error reading localStorage key "${key}":`)
+            console.warn(`Error reading localStorage key: "${key}"`)
             return defaultValue
         }
     })
