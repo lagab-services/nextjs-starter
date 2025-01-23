@@ -61,7 +61,7 @@ export const getColumns = (): ColumnDef<User>[] => {
             enableHiding: false,
         },
         {
-            accessorKey: 'username',
+            accessorKey: 'status',
             header: ({column}) => (
                 <DataTableColumnHeader column={column} title='Statut'/>
             ),

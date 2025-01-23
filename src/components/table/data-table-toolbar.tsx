@@ -85,8 +85,8 @@ const DataTableToolBar = <TData, >({
                 )}
             </div>
             <div className="flex items-center gap-2">
-                {children}
                 <DataTableViewOptions table={table}/>
+                {children}
             </div>
         </div>
     )

@@ -1,4 +1,3 @@
-//: Promise<User[]>
 import {GetUsersSchema, UsersSchema} from '@/app/(dashboard)/customer/_lib/validations';
 
 export async function fetchUsers(input: GetUsersSchema) {
@@ -10,7 +9,6 @@ export async function fetchUsers(input: GetUsersSchema) {
         }
 
         const res = await response.json();
-        console.log('fetch', res)
 
         // Validate the response data with Zod schema
         const data = UsersSchema.parse(res);

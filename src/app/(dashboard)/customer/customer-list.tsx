@@ -8,10 +8,11 @@ import {ColumnDef} from '@tanstack/table-core';
 import DataTable from '@/components/table/data-table';
 import DataTableToolBar from '@/components/table/data-table-toolbar';
 import {getColumns} from '@/app/(dashboard)/customer/columns';
+import {Button} from '@/components/ui/button';
+import {Plus} from 'lucide-react';
 
 interface CustomerListProps {
     usersPromise: ReturnType<typeof fetchUsers>
-    //searchParams: SearchParams
 }
 
 const CustomerList = ({usersPromise}: CustomerListProps) => {
@@ -44,7 +45,7 @@ const CustomerList = ({usersPromise}: CustomerListProps) => {
         <div>
             <DataTable table={table}>
                 <DataTableToolBar table={table} filterFields={filterFields}>
-
+                    <Button size="sm" variant="secondary"><Plus/> Add new customer</Button>
                 </DataTableToolBar>
             </DataTable>
 
