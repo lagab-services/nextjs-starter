@@ -42,14 +42,13 @@ const CustomerList = ({usersPromise}: CustomerListProps) => {
         getRowId: (originalRow, index) => `${originalRow.id}`,
     });
     return (
-        <div>
-            <DataTable table={table}>
-                <DataTableToolBar table={table} filterFields={filterFields}>
-                    <Button size="sm" variant="secondary"><Plus/> Add new customer</Button>
-                </DataTableToolBar>
-            </DataTable>
+        <DataTable table={table}>
+            <div className="flex justify-end">
+                <Button size="sm" variant="secondary"><Plus/> Add new customer</Button>
+            </div>
+            <DataTableToolBar table={table} filterFields={filterFields}/>
+        </DataTable>
 
-        </div>
     );
 };
 
