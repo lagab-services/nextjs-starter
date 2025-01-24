@@ -45,7 +45,7 @@ const SettingsLayout = ({children}: SettingsLayoutProps) => {
                 <SidebarTrigger className=" md:hidden mx-4" onClick={(event) => {
                     _sidebarOpen(!sidebarOpen)
                 }}><Menu/></SidebarTrigger>
-                <Sidebar variant="sidebar" collapsible={isMobile ? "offcanvas" : "none"} className="hidden md:block">
+                <Sidebar variant="sidebar" collapsible={isMobile ? "offcanvas" : "none"} className="hidden md:block bg-inherit">
                     <SidebarContent>
                         <SidebarGroup>
                             <SidebarGroupContent>
