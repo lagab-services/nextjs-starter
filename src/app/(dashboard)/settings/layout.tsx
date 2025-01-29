@@ -11,36 +11,40 @@ import {
     SidebarProvider,
     SidebarTrigger
 } from '@/components/ui/sidebar';
-import {Bell, Check, Globe, Home, Keyboard, Link, Lock, Menu, MessageCircle, Paintbrush, Settings, Video} from 'lucide-react';
+import {Bell, Globe, Home, Link, Lock, Menu, MessageCircle, Paintbrush, Settings} from 'lucide-react';
 import {useIsMobile} from '@/hooks/use-mobile';
 import {cn} from '@/lib/utils';
+import {usePathname} from "next/navigation";
+import {NavItem} from "@/types/nav";
 
 interface SettingsLayoutProps {
     children: React.ReactNode
 }
 
-const data = {
+interface DataNav {
+    nav: NavItem[];
+}
+
+const data: DataNav = {
     nav: [
-        {name: "Notifications", icon: Bell},
-        {name: "Navigation", icon: Menu},
-        {name: "Home", icon: Home},
-        {name: "Appearance", icon: Paintbrush},
-        {name: "Messages & media", icon: MessageCircle},
-        {name: "Language & region", icon: Globe},
-        {name: "Accessibility", icon: Keyboard},
-        {name: "Mark as read", icon: Check},
-        {name: "Audio & video", icon: Video},
-        {name: "Connected accounts", icon: Link},
-        {name: "Privacy & visibility", icon: Lock},
-        {name: "Advanced", icon: Settings},
+        {title: "Notifications", href: "/settings/notifications", icon: Bell},
+        {title: "Navigation", href: "/settings/navigation", icon: Menu},
+        {title: "Home", href: "/settings", icon: Home},
+        {title: "Appearance", href: "/settings/appearance", icon: Paintbrush},
+        {title: "Messages & media", href: "/settings/messages-media", icon: MessageCircle},
+        {title: "Language & region", href: "/settings/lanq", icon: Globe},
+        {title: "Connected accounts", href: "/settings/connected-accounts", icon: Link},
+        {title: "Privacy & visibility", href: "/settings/privacy", icon: Lock},
+        {title: "Advanced", href: "/settings/advanced", icon: Settings},
     ],
 }
 
 const SettingsLayout = ({children}: SettingsLayoutProps) => {
     const [sidebarOpen, _sidebarOpen] = useState(false)
     const isMobile = useIsMobile()
+    const pathname = usePathname()
     return (
-        <div className="container mx-auto p-6 space-y-5">
+        <div className="w-full mx-auto p-6 space-y-5">
             <SidebarProvider className={cn("items-start", isMobile ? "flex-col" : "")} open={sidebarOpen} onOpenChange={_sidebarOpen}>
                 <SidebarTrigger className=" md:hidden mx-4" onClick={(event) => {
                     _sidebarOpen(!sidebarOpen)
@@ -51,14 +55,14 @@ const SettingsLayout = ({children}: SettingsLayoutProps) => {
                             <SidebarGroupContent>
                                 <SidebarMenu>
                                     {data.nav.map((item) => (
-                                        <SidebarMenuItem key={item.name}>
+                                        <SidebarMenuItem key={item.title}>
                                             <SidebarMenuButton
                                                 asChild
-                                                isActive={item.name === "Messages & media"}
+                                                isActive={item.href === pathname}
                                             >
-                                                <a href="#">
+                                                <a href={item.href}>
                                                     <item.icon/>
-                                                    <span>{item.name}</span>
+                                                    <span>{item.title}</span>
                                                 </a>
                                             </SidebarMenuButton>
                                         </SidebarMenuItem>
