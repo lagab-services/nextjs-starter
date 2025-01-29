@@ -1,9 +1,7 @@
 import React from 'react';
 import {useIsMobile} from "@/hooks/use-mobile";
 import {Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle} from "@/components/ui/dialog";
-import {Button} from "@/components/ui/button";
-import {X} from "lucide-react";
-import {Drawer, DrawerContent, DrawerHeader, DrawerTitle} from "@/components/ui/drawer";
+import {Drawer, DrawerContent, DrawerDescription, DrawerHeader, DrawerTitle} from "@/components/ui/drawer";
 
 interface ResponsiveDialogProps {
     title?: string;
@@ -20,12 +18,10 @@ const ResponsiveDialog = ({title, children, open, onOpenChange}: ResponsiveDialo
         return (
             <Drawer open={open} onOpenChange={onOpenChange}>
                 <DrawerContent className="p-4">
-                    <DrawerHeader className="flex justify-between items-center">
+                    <DrawerHeader className="sm:text-center">
                         <DrawerTitle>{title}</DrawerTitle>
-                        <Button variant="ghost" size="icon" className="hidden" onClick={close}>
-                            <X className="w-5 h-5"/>
-                        </Button>
                     </DrawerHeader>
+                    <DrawerDescription/>
                     <div className="p-4">{children(close)}</div>
                 </DrawerContent>
             </Drawer>
@@ -37,7 +33,7 @@ const ResponsiveDialog = ({title, children, open, onOpenChange}: ResponsiveDialo
                 <DialogHeader className="flex justify-between items-center">
                     <DialogTitle>{title}</DialogTitle>
                 </DialogHeader>
-                <DialogDescription></DialogDescription>
+                <DialogDescription/>
                 {children(close)}
             </DialogContent>
         </Dialog>
