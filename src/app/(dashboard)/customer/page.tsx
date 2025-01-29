@@ -14,7 +14,7 @@ const CustomerPage = async ({searchParams}: CustomerPageProps) => {
     const usersPromise = fetchUsers(search);
 
     return (
-        <div className="container mx-auto p-6 space-y-5">
+        <div className="w-full mx-auto p-6 space-y-5">
             <div className="md:overflow-hidden">
                 <h2 className='text-2xl font-bold tracking-tight'>Customers</h2>
                 <p className='text-muted-foreground'>
