@@ -5,6 +5,7 @@ import {SidebarInset, SidebarProvider, SidebarTrigger} from '@/components/ui/sid
 import {Separator} from "@/components/ui/separator";
 import {BreadcrumbProvider, Breadcrumbs} from "@/components/breadcrumbs";
 import useLocalStorage from "@/hooks/use-local-storage";
+import ModeToggle from '@/components/mode-toggle';
 
 interface DashboardLayoutProps {
     children: React.ReactNode
@@ -30,6 +31,9 @@ const DashboardLayout = ({children}: DashboardLayoutProps) => {
                             <SidebarTrigger className="-ml-1"/>
                             <Separator orientation="vertical" className="mr-2 h-4"/>
                             <Breadcrumbs/>
+                        </div>
+                        <div className="ml-auto flex items-center space-x-4 px-4">
+                            <ModeToggle/>
                         </div>
                     </header>
                     {children}

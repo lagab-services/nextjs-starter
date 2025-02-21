@@ -30,7 +30,7 @@ const ResponsiveDialog = ({title, children, open, onOpenChange}: ResponsiveDialo
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
             <DialogContent>
-                <DialogHeader className="flex justify-between items-center">
+                <DialogHeader>
                     <DialogTitle>{title}</DialogTitle>
                 </DialogHeader>
                 <DialogDescription/>
