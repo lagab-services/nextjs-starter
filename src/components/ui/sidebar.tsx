@@ -155,8 +155,8 @@ const Sidebar = React.forwardRef<
     HTMLDivElement,
     React.ComponentProps<"div"> & {
     side?: "left" | "right"
-    variant?: "sidebar" | "floating" | "inset"
-    collapsible?: "offcanvas" | "icon" | "none"
+    variant?: "sidebar" | "floating" | "inset" | "inset2"
+    collapsible?: "offcanvas" | "icon" | "none" | "hide"
 }
 >(
     (
@@ -224,9 +224,10 @@ const Sidebar = React.forwardRef<
                         "duration-200 relative h-svh w-[--sidebar-width] bg-transparent transition-[width] ease-linear",
                         "group-data-[collapsible=offcanvas]:w-0",
                         "group-data-[side=right]:rotate-180",
-                        variant === "floating" || variant === "inset"
-                            ? "group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4))]"
-                            : "group-data-[collapsible=icon]:w-[--sidebar-width-icon]"
+                        collapsible === "hide" ? "hidden" : "",
+                        variant === "floating" || variant === "inset" || collapsible === "hide"
+                            ? "group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4))]  [[data-side=left][data-collapsible=hide][data-state=collapsed]_&]:hidden "
+                            : "group-data-[collapsible=icon]:w-[--sidebar-width-icon] group-data-[collapsible=inset]:h-0"
                     )}
                 />
                 <div
@@ -245,7 +246,7 @@ const Sidebar = React.forwardRef<
                 >
                     <div
                         data-sidebar="sidebar"
-                        className="flex h-full w-full flex-col bg-sidebar group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:border-sidebar-border group-data-[variant=floating]:shadow"
+                        className="flex h-full w-full flex-col bg-sidebar group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:border-sidebar-border group-data-[variant=floating]:shadow  group-data-[variant=inset2]:bg-transparent"
                     >
                         {children}
                     </div>
