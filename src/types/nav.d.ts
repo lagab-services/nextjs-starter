@@ -5,6 +5,7 @@ export interface NavItem {
     title: string;
     href: string;
     isActive?: boolean;
+    emoji?: string;
     icon?: JSX.Element | LucideIcon; // Optionnel : Icône pour chaque lien
     children?: NavItem[];
 
